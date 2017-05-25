@@ -5,38 +5,82 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    // キャラクターコントローラー
-    //private CharacterController m_EnemyController;
-    // ナビゲーター
-    private UnityEngine.AI.NavMeshAgent m_Agent;
+    // エージェント
+    private NavMeshAgent m_Agent;
     // アニメーター
     private Animator m_Animator;
-    // 目的地
-    public Vector3 m_Destination;
-    // 歩く速度
-    public float m_WalkSpeed;
-    // 移動する方向と速度
-    private Vector3 m_Velocity;
-    // 方向
-    private Vector3 m_Direction;
     // 到着したか判定用
     private bool m_isArrived;
+    // 目的地リスト
+    private Vector3[] m_DestinationList;
+    // 次の目的地リスト
+    private List<int>[] m_NextDestinationList;
+    // 要素番号
+    private int m_Iterator;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        //// キャラクターコントローラーを取得する
-        //m_EnemyController = GetComponent<CharacterController>();
-        // 
+        // 最初の要素番号
+        m_Iterator = 0;
+        // 目的地リストを設定
+        m_DestinationList = new Vector3[20]
+            {
+                new Vector3(0.2f, 0.0f, 0.3f),
+                new Vector3(1.8f, 0.0f, 0.3f),
+                new Vector3(0.2f, 0.0f, 3.9f),
+                new Vector3(4.2f, 0.0f, 0.3f),
+                new Vector3(1.8f, 0.0f, 2.3f),
+                new Vector3(1.8f, 0.0f, 3.9f),
+                new Vector3(0.2f, 0.0f, 6.3f),
+                new Vector3(6.8f, 0.0f, 0.3f),
+                new Vector3(4.1f, 0.0f, 2.3f),
+                new Vector3(1.8f, 0.0f, 3.4f),
+                new Vector3(1.8f, 0.0f, 4.6f),
+                new Vector3(1.8f, 0.0f, 6.3f),
+                new Vector3(6.8f, 0.0f, 2.3f),
+                new Vector3(5.5f, 0.0f, 2.3f),
+                new Vector3(5.5f, 0.0f, 3.4f),
+                new Vector3(4.7f, 0.0f, 4.7f),
+                new Vector3(4.7f, 0.0f, 6.3f),
+                new Vector3(5.5f, 0.0f, 4.6f),
+                new Vector3(6.8f, 0.0f, 4.7f),
+                new Vector3(6.8f, 0.0f, 6.3f)
+            };
+        // 次の目的地リストを設定
+        m_NextDestinationList = new List<int>[20]
+            {
+                new List<int> { 1, 2 },
+                new List<int> { 3, 4 },
+                new List<int> { 5, 6 },
+                new List<int> { 7, 8 },
+                new List<int> { 8, 9 },
+                new List<int> { 10 },
+                new List<int> { 11 },
+                new List<int> { 12 },
+                new List<int> { 13 },
+                new List<int> { 5, 14 },
+                new List<int> { 11, 15 },
+                new List<int> { 16 },
+                new List<int> { 18 },
+                new List<int> { 12, 14 },
+                new List<int> { 17 },
+                new List<int> { 16, 17 },
+                new List<int> { 19 },
+                new List<int> { 18 },
+                new List<int> { 19 },
+                new List<int> { 99 },
+            };
+        // エージェントを取得する
         m_Agent = GetComponent<NavMeshAgent>();
         // アニメーターを取得する
         m_Animator = GetComponent<Animator>();
-        // 移動する方向と速度を初期化
-        m_Velocity = Vector3.zero;
         // 到着したかの判定用
         m_isArrived = false;
-        // 目的地を設定
-        m_Agent.SetDestination(m_Destination);
-	}
+        // 目的地を設定する
+        SetDestination();
+        // エージェントの目的地を設定する
+        if (m_Agent.pathStatus != NavMeshPathStatus.PathInvalid) { m_Agent.SetDestination(m_DestinationList[m_Iterator]); }
+    }
 
     // Update is called once per frame
     void Update()
@@ -46,19 +90,25 @@ public class EnemyMove : MonoBehaviour
             return;
         // アニメーターのSpeedの値を設定する
         m_Animator.SetFloat("Speed", m_Agent.speed);
-        // 現在の位置から目的地への方向を計算する
-        m_Direction = (m_Destination - transform.position).normalized;
-        // 目的地の向きに視線を設定する
-        transform.LookAt(new Vector3(m_Destination.x, transform.position.y, m_Destination.z));
-        // 移動速度を設定する
-        m_Velocity = m_Direction * m_WalkSpeed;
         // 目的地から現在の位置までの距離が1未満か判定する
-        if (Vector3.Distance(m_Destination, transform.position) < 0.8f)
+        if (Vector3.Distance(m_DestinationList[m_Iterator], transform.position) < 0.1f)
         {
-            // bool型変数を真にする
-            m_isArrived = true;
             // アニメーターのSpeedの値に0を設定する
             m_Animator.SetFloat("Speed", 0.0f);
+            // 目的地を設定する
+            SetDestination();
+            // 次の目的地があるならエージェントの目的地を設定する
+            if (m_Iterator != 99){ m_Agent.SetDestination(m_DestinationList[m_Iterator]); }
+            // そうでないなら到着フラグをtrueにする
+            else{ m_isArrived = true; }
         }
+    }
+
+    void SetDestination()
+    {
+        // 次の目的地    
+        int nextDestination = Random.Range(0, m_NextDestinationList[m_Iterator].Count);
+        // 要素番号を設定
+        m_Iterator = m_NextDestinationList[m_Iterator][nextDestination];
     }
 }

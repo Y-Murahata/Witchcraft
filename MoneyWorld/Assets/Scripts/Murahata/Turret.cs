@@ -47,7 +47,7 @@ public class Turret : MonoBehaviour {
     // Use this for initialization
     void Start () {
         coolTimer = 0;
-        expEffect = transform.FindChild("Head/Flame1").gameObject;
+        expEffect = transform.Find("Head/Flame1").gameObject;
     }
 	
 	// Update is called once per frame
@@ -84,7 +84,7 @@ public class Turret : MonoBehaviour {
     void Attack(GameObject enemy)
     {
         //  敵の中心を取得
-        GameObject enemyBody = enemy.transform.FindChild("Body").gameObject;
+        GameObject enemyBody = enemy.transform.Find("Body").gameObject;
 
         //  プレハブの弾丸を作成する
         GameObject bullet = Instantiate((GameObject)Resources.Load("Bullet"));
@@ -96,7 +96,7 @@ public class Turret : MonoBehaviour {
         bullet.GetComponent<Bullet>().m_power = m_power;
 
         //  親タレットの砲身を取得する
-        GameObject barrel = transform.FindChild("Head").gameObject;
+        GameObject barrel = transform.Find("Head").gameObject;
 
         //  座標を設定
         bullet.transform.position = new Vector3(barrel.transform.position.x, barrel.transform.position.y, barrel.transform.position.z);

@@ -43,7 +43,7 @@ public class Missile : MonoBehaviour
     // Use this for initialization
     void Start () {
         coolTimer = 0;
-        expEffect = transform.FindChild("Head/Flame1").gameObject;
+        expEffect = transform.Find("Head/Flame1").gameObject;
     }
 	
     //===================================================================================
@@ -84,7 +84,7 @@ public class Missile : MonoBehaviour
         for (float i = 0; i < 3; i++)
         {
             //  敵の中心を取得
-            GameObject enemyBody = enemy.transform.FindChild("Body").gameObject;
+            GameObject enemyBody = enemy.transform.Find("Body").gameObject;
 
             //  プレハブの弾丸を作成する
             GameObject bullet = Instantiate((GameObject)Resources.Load("Bullet"));
@@ -96,7 +96,7 @@ public class Missile : MonoBehaviour
             bullet.GetComponent<Bullet>().m_power = m_power;
 
             //  親タレットの砲身を取得する
-            GameObject barrel = transform.FindChild("Head").gameObject;
+            GameObject barrel = transform.Find("Head").gameObject;
 
             //  敵との角度を出す
             var rad = enemyBody.transform.position - barrel.transform.position;

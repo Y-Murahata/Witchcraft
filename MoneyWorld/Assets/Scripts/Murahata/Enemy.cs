@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        m_expEffect = transform.FindChild("Explosion").gameObject;
+        m_expEffect = transform.Find("Explosion").gameObject;
 
     }
 
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             deathFlag = true;
 
             //  敵の見た目を消す
-            transform.FindChild("Body").gameObject.SetActive(false);
+            transform.Find("Body").gameObject.SetActive(false);
 
             //  死亡時のエフェクトを出す
             m_expEffect.GetComponent<ParticleSystem>().Play();
