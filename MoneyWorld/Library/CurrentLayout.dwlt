@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 471}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_MinSize: {x: 913, y: 421}
   m_MaxSize: {x: 22008, y: 10021}
   vertical: 0
-  controlID: 9
+  controlID: 60
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -411,33 +411,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Nagaura
+    - Assets/Resources
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Nagaura
+  - Assets/Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\s162129\Documents\SchoolWork\00_Production\Witchcraft\MoneyWorld
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e2a0000
-    m_LastClickedID: 10894
+    m_SelectedIDs: 6c2b0000
+    m_LastClickedID: 11116
     m_ExpandedIDs: 00000000c02700000c2900008e2a0000a62a00004e2b0000162c0000662e00003a320000a832000026330000043400003a3800003c3800003e38000040380000423800004438000046380000483800004a3800004c3800004e38000050380000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Murahata
+      m_OriginalName: Murahata
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12270
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -451,7 +451,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c02700000c2900008e2a0000a62a00004e2b00006c2b0000162c0000662e00003a320000a832000026330000043400003a3800003c3800003e38000040380000423800004438000046380000483800004a3800004c3800004e38000050380000
+    m_ExpandedIDs: 00000000c02700000c2900008e2a0000a62a00004e2b0000162c0000662e00003a320000a832000026330000043400003a3800003c3800003e38000040380000423800004438000046380000483800004a3800004c3800004e38000050380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,18 +482,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: DOTweenSettings
+      m_OriginalName: DOTweenSettings
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 11992
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
@@ -609,14 +609,14 @@ MonoBehaviour:
     width: 563
     height: 280
   m_SceneLighting: 1
-  lastFramingTime: 47.36743078302193
+  lastFramingTime: 3611.9641869258407
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.1293268, y: 0.00000047683716, z: 2.9852517}
+    m_Target: {x: 3.6157796, y: 0.3200009, z: 2.2161524}
     speed: 2
-    m_Value: {x: 3.1293268, y: 0.00000047683716, z: 2.9852517}
+    m_Value: {x: 3.6157796, y: 0.3200009, z: 2.2161524}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -643,9 +643,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.7071068, y: 0, z: -0, w: -0.7071068}
   m_Size:
-    m_Target: 8.139635
+    m_Target: 2.1988764
     speed: 2
-    m_Value: 8.139635
+    m_Value: 2.1988764
   m_Ortho:
     m_Target: 0
     speed: 2

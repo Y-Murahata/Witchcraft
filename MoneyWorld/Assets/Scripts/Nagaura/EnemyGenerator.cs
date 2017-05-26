@@ -8,6 +8,7 @@ public class EnemyGenerator : MonoBehaviour
     const float WAVE_SPAN = 15.0f;
     const int SPAWN_ENEMY_NUM = 10;
 
+    public GameObject m_PlatoonPrefab;
     public GameObject m_EnemyPrefab;
     private float m_Delta = 0.0f;
     private int m_RemainEnemy = SPAWN_ENEMY_NUM;
@@ -38,10 +39,23 @@ public class EnemyGenerator : MonoBehaviour
         {
             // 経過秒数の初期化
             m_Delta = 0.0f;
-            // エネミーの生成
-            GameObject enemy = Instantiate(m_EnemyPrefab) as GameObject;
+            // 小隊の生成
+            GameObject platoon = Instantiate(m_PlatoonPrefab) as GameObject;
+            // エネミー
+            GameObject[] enemy = new GameObject[3];
+            for (int i = 0; i < 3; i++)
+            {
+                // エネミーの生成
+                enemy[i] = Instantiate(m_EnemyPrefab) as GameObject;
+                // 小隊をエネミーの親に設定
+                enemy[i].transform.parent = platoon.transform;
+            }
+            // エネミーのローカル座標を設定
+            enemy[0].transform.localPosition = new Vector3(-0.2f, 0.0f, 0.0f);
+            enemy[1].transform.localPosition = new Vector3(0.0f, 0.0f, 0.2f);
+            enemy[2].transform.localPosition = new Vector3(0.2f, 0.0f, 0.0f);
             // エネミーの座標の初期化
-            enemy.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+            platoon.transform.position = new Vector3(0.2f, 0.0f, 0.3f);
             // 残りの敵の数を減らす
             m_RemainEnemy--;
             if (m_RemainEnemy <= 0)

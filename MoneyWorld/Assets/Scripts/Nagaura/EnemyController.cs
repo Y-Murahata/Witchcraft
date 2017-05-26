@@ -7,8 +7,6 @@ public class EnemyController : MonoBehaviour
 {
     // エージェント
     private NavMeshAgent m_Agent;
-    // アニメーター
-    private Animator m_Animator;
     // 目的地リスト
     private Vector3[] m_DestinationList;
     // 次の目的地リスト
@@ -70,8 +68,6 @@ public class EnemyController : MonoBehaviour
             };
         // エージェントを取得する
         m_Agent = GetComponent<NavMeshAgent>();
-        // アニメーターを取得する
-        m_Animator = GetComponent<Animator>();
         // 目的地を設定する
         SetDestination();
         // エージェントの目的地を設定する
@@ -81,13 +77,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // アニメーターのSpeedの値を設定する
-        m_Animator.SetFloat("Speed", m_Agent.speed);
         // 目的地から現在の位置までの距離が1未満か判定する
         if (Vector3.Distance(m_DestinationList[m_Iterator], transform.position) < 0.1f)
         {
-            // アニメーターのSpeedの値に0を設定する
-            m_Animator.SetFloat("Speed", 0.0f);
             // 目的地を設定する
             SetDestination();
             // 次の目的地があるならエージェントの目的地を設定する
